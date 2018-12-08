@@ -1,4 +1,3 @@
-
 call plug#begin('~/.vim/bundle')
 
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -34,7 +33,8 @@ noremap <C-a> :CtrlP ~/.vim/<CR>
 
 
 " Some basics:
-set nu
+set number
+colorscheme desert
 set nocompatible
 filetype plugin on
 syntax on
@@ -52,23 +52,4 @@ map <F6> :setlocal spell! spelllang=en_us<CR>
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 set splitbelow splitright
 
-
-
-
-
-"""HTML
-	autocmd FileType html inoremap ,b <b></b><Space><++><Esc>FbT>i
-	autocmd FileType html inoremap ,it <em></em><Space><++><Esc>FeT>i
-	autocmd FileType html inoremap ,1 <h1></h1><Enter><Enter><++><Esc>2kf<i
-	autocmd FileType html inoremap ,2 <h2></h2><Enter><Enter><++><Esc>2kf<i
-	autocmd FileType html inoremap ,3 <h3></h3><Enter><Enter><++><Esc>2kf<i
-	autocmd FileType html inoremap ,p <p></p><Enter><Enter><++><Esc>02kf>a
-	autocmd FileType html inoremap ,a <a<Space>href=""><++></a><Space><++><Esc>14hi
-	autocmd FileType html inoremap ,e <a<Space>target="_blank"<Space>href=""><++></a><Space><++><Esc>14hi
-	autocmd FileType html inoremap ,ul <ul><Enter><li></li><Enter></ul><Enter><Enter><++><Esc>03kf<i
-	autocmd FileType html inoremap ,li <Esc>o<li></li><Esc>F>a
-
-	""".xml
-	autocmd FileType xml inoremap ,e <item><Enter><title><++></title><Enter><guid<space>isPermaLink="false"><++></guid><Enter><pubDate><Esc>:put<Space>=strftime('%a, %d %b %Y %H:%M:%S %z')<Enter>kJA</pubDate><Enter><link><++></link><Enter><description><![CDATA[<++>]]></description><Enter></item><Esc>?<title><enter>cit
-	autocmd FileType xml inoremap ,a <a href="<++>"><++></a><++><Esc>F"ci"
 
