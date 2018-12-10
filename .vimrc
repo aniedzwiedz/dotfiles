@@ -44,6 +44,16 @@ set wildmode=longest,list,full
 " Disables automatic commenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+Plug 'pearofducks/ansible-vim'
+Plug 'stephpy/vim-yaml'
+autocmd FileType yaml setlocal ai ts=2 sw=2 et
+let g:ansible_unindent_after_newline = 1
+let g:ansible_yamlKeyName = 'yamlKey'
+let g:ansible_attribute_highlight = "ob"
+let g:ansible_name_highlight = 'b'
+let g:ansible_extra_keywords_highlight = 1
+let g:ansible_normal_keywords_highlight = 'Constant'
+
 " Spell-check set to <leader>o, 'o' for 'orthography':
 map <F6> :setlocal spell! spelllang=en_us<CR>
 " Check file in shellcheck:
@@ -51,9 +61,4 @@ map <F6> :setlocal spell! spelllang=en_us<CR>
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 set splitbelow splitright
-
-
-" ansible
-autocmd FileType yaml setlocal ai ts=2 sw=2 et
-
 
