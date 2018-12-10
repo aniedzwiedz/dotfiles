@@ -1,0 +1,12 @@
+[all:vars]
+ansible_sudo_pass=student
+
+[myself]
+localhost
+
+[intranetweb]
+servera.lab.example.com 
+
+[everyone:children]
+myself
+intranetweb 
