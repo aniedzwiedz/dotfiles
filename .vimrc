@@ -16,12 +16,34 @@ Plug 'https://github.com/lepture/vim-jinja.git'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'https://github.com/tpope/vim-commentary'
 
+Plug 'https://github.com/klen/python-mode.git'
+" Paint css colors with the real color
+Plug 'lilydjwg/colorizer'
+Plug 'fisadev/fisa-vim-colorscheme'
+
+" puppet
+Plug 'rodjek/vim-puppet'
+Plug 'honza/vim-snippets'
+Plug 'vim-syntastic/syntastic'
 call plug#end()
 
+" comment
+:nnoremap <C-c> :Commentary<cr>
 
 " jinja
 au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm set ft=jinja
+
+" Python 
+" Override go-to.definition key shortcut to Ctrl-]
+let g:pymode_rope_goto_definition_bind = "<C-]>"
+" Override run current python file key shortcut to Ctrl-Shift-e
+let g:pymode_run_bind = "<C-S-e>"
+" Override view python doc key shortcut to Ctrl-Shift-d
+let g:pymode_doc_bind = "<C-S-d>"
+" let g:pymode_python = 'python3'
+
 
 
 " better searches
@@ -130,3 +152,31 @@ function s:SetCursorLine()
     hi cursorline cterm=none ctermbg=DarkGray ctermfg=white
 endfunction
 autocmd VimEnter * call s:SetCursorLine()
+
+" Airline ------------------------------
+colorscheme fisa
+
+let g:airline_powerline_fonts = 0
+let g:airline_theme = 'bubblegum'
+let g:airline#extensions#whitespace#enabled = 0
+
+highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119
+highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167
+highlight DiffChange        cterm=bold ctermbg=none ctermfg=227
+highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119
+highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167
+highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227
+ 
+
+" puppet
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_python_checkers = ['pylint']
+
