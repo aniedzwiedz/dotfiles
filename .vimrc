@@ -24,10 +24,14 @@ Plug 'lilydjwg/colorizer'
 Plug 'fisadev/fisa-vim-colorscheme'
 
 " puppet
+Plug 'godlygeek/tabular'
 Plug 'rodjek/vim-puppet'
 Plug 'honza/vim-snippets'
 Plug 'vim-syntastic/syntastic'
+
 call plug#end()
+
+let g:ag_working_path_mode="r"
 
 " comment
 :nnoremap <C-c> :Commentary<cr>
@@ -178,4 +182,10 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_python_checkers = ['pylint']
+au BufRead,BufNewFile *.pp              set filetype=puppet
 
+" let g:syntastic_puppet_checkers = ['puppetlint']
+
+
+" XML formatter
+command! XMLpretty %!xmllint --format %
