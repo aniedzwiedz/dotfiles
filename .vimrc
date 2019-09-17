@@ -6,6 +6,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 Plug 'mhinz/vim-signify'
+Plug 'mhinz/vim-grepper'
 " Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'stephpy/vim-yaml'
@@ -59,7 +60,7 @@ set smartcase
 " Allow backspacing over autoindent, line breaks and start of insert action
 set backspace=indent,eol,start
 
-nnoremap <CR> :nohlsearch<cr>
+" nnoremap <CR> :nohlsearch<cr>
 
 " search 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
