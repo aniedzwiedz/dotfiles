@@ -6,11 +6,14 @@
     "$schema": "https://aka.ms/terminal-profiles-schema",
     "requestedTheme": "dark",
     "copyOnSelect": true,
-	"alwaysShowTabs": false,
+     "alwaysShowTabs": false,
     "initialCols": 140,
     "initialRows": 50,
     "useAcrylic": true,
-    "acrylicOpacity": 0.9,
+    "closeOnExit" : true,
+    "fontSize": 11,
+    "fontFace": "CaskaydiaCove Nerd Font",  
+    "acrylicOpacity": 0.4,
     "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
 
     "profiles":
@@ -24,14 +27,17 @@
 		    {
                 "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
                 "hidden": false,
-				"cursorColor": "#fbfff5",
+		"cursorColor": "#fbfff5",
                 "name": "Ubuntu",
+                "startingDirectory" : "/home/aniedzwiedz",
                 "commandline": "wsl -d Ubuntu ",
-                //"source": "Windows.Terminal.Wsl",
+                "backgroundImage": "C:/Users/art/Pictures/ubuntu-logo.png",
+                "backgroundImageOpacity" : 0.1,
+                "backgroundImageAlignment": "bottomRight",
+                "backgroundImageStretchMode": "none",
                 "useAcrylic": true,
                 "acrylicOpacity": 0.9,
-                "fontFace": "Consolas",
-                "fontSize": 14
+                "fontFace": "CaskaydiaCove Nerd Font"   
             },
             {
                 // Make changes here to the powershell.exe profile
