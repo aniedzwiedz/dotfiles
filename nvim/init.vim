@@ -18,3 +18,5 @@ colorscheme onedark
 
 lua require'plug-colorizer'
 
+nmap <C-n> :NERDTreeFind<CR>
+
