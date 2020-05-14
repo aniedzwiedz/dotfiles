@@ -2,13 +2,14 @@ source $HOME/.config/nvim/vim-plug/plugins.vim
 source $HOME/.config/nvim/vim-plug/signify.vim
 source $HOME/.config/nvim/vim-plug/start-screen.vim
 source $HOME/.config/nvim/vim-plug/fzf.vim
+source $HOME/.config/nvim/vim-plug/coc.vim
 source $HOME/.config/nvim/themes/airline.vim
 source $HOME/.config/nvim/themes/onedark.vim
 
 
 nnoremap <C-Left> :bprevious<CR>
 nnoremap <C-Right> :bnext<CR>
-nnoremap <C-w> :bd<CR>
+nnoremap <leader>q :bd<CR>
 
 " We don't need to see things like -- INSERT -- anymore
 set noshowmode
