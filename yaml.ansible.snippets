@@ -30812,14 +30812,15 @@ endsnippet
 
 snippet shell
 - name: ${1:task_description}
-  shell:
-    free_form: ${2}
-    #warn: ${3:yes}
-    #creates: ${4}
-    #executable: ${5}
-    #chdir: ${6}
-    #stdin: ${7}
-    #removes: ${8}
+  shell: "${2:command}"
+    register: ${3:shell}_result
+    become: ${4:yes}
+    #changed_when: "${3:shell}_result.rc == 2"
+    #failed_when: "${3:shell}_result.rc != 0 and ${3:shell}_result.rc != 2"
+
+- name: Print ${1:task_description} output
+  debug:
+    var: ${3:shell}_result.stdout_lines
 endsnippet
 
 snippet sl_vm
