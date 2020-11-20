@@ -90,7 +90,8 @@ export PATH=~/.local/bin/:$PATH
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-alias mvn='mvn -B -Dmaven.repo.local=`pwd`/repo -Darguments=-DskipTests -Dmaven.test.skip=true -DskipTests -f  pom.xml clean '
+#alias mvn='/mnt/c/opt/apache-maven-3.3.9/bin/mvn -B -Dmaven.repo.local=`pwd`/repo -Darguments=-DskipTests -Dmaven.test.skip=true -DskipTests -f  pom.xml clean '
+alias mvn='/mnt/c/opt/apache-maven-3.3.9/bin/mvn -B -Darguments=-DskipTests -Dmaven.test.skip=true -DskipTests -f  pom.xml clean '
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -103,11 +104,18 @@ alias mvn='mvn -B -Dmaven.repo.local=`pwd`/repo -Darguments=-DskipTests -Dmaven.
 source /usr/share/doc/fzf/examples/completion.zsh
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 
-export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border --info inline --preview-window down:1:noborder  --color fg:#bbccdd,fg+:#ddeeff,bg:#334455,preview-bg:#223344,border:#778899 --cycle'
-# export FZF_DEFAULT_COMMAND='fd --type f --exclude .git'
+#export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border --info inline --preview-window down:1:noborder  --color fg:#bbccdd,fg+:#ddeeff,bg:#334455,preview-bg:#223344,border:#778899 --cycle'
+export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border --info inline  --cycle'
+### export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border --preview "bat --style=numbers --color=always --line-range :50 {}"'
+
 # export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs --exclude .git'
-export FZF_DEFAULT_COMMAND='rg --files --exclude -g "!{node_modules,.git}"'
+# export FZF_DEFAULT_COMMAND='rg --files --exclude -g "!{node_modules,.git,.idea}"'
+
+### export FZF_DEFAULT_COMMAND='/bin/fdfind --type f --follow --exclude "!{node_modules,.git,.idea}"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+export FZF_PREVIEW_COMMAND="bat --style=numbers,changes --wrap never --color always {} || cat {} || tree -C {}"
+export FZF_CTRL_T_OPTS="--min-height 30 --preview-window down:60% --preview-window noborder --preview '($FZF_PREVIEW_COMMAND) 2> /dev/null'"
 
 
 # Options to fzf command
@@ -116,3 +124,12 @@ export FZF_COMPLETION_OPTS='+c -x'
 # git branch | fzf-tmux -d 15
 # fzf --height 40%
 
+# export PATH=~/miniconda3/bin:$PATH
+
+alias grep_all="git branch -a | tr -d \* | sed '/->/d' | xargs git grep"
+
+
+# YT
+# https://github.com/ytdl-org/youtube-dl/
+alias yt_mp4_full="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'"
+alias yt_mp4_720="youtube-dl -f 'bestvideo[height<=720]+bestaudio[ext=m4a]/best[ext=mp4]/best'"
