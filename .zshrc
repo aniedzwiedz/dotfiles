@@ -133,3 +133,11 @@ alias grep_all="git branch -a | tr -d \* | sed '/->/d' | xargs git grep"
 # https://github.com/ytdl-org/youtube-dl/
 alias yt_mp4_full="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'"
 alias yt_mp4_720="youtube-dl -f 'bestvideo[height<=720]+bestaudio[ext=m4a]/best[ext=mp4]/best'"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
