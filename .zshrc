@@ -14,17 +14,17 @@ fi
 # done
 # unset _entry
 
-alias vi='nvim '
-alias vim='nvim '
+alias vi='lvim '
+alias vim='lvim '
 
 # If you come from bash you might have to change your $PATH.
-export PATH=/home/aniedzwiedz/.local/share/gem/ruby/3.0.0/bin:/usr/local/bin:$PATH:
+export PATH=/home/aniedzwiedz/.local/share/gem/ruby/3.0.0/bin:/home/aniedzwiedz/.local/bin:/usr/local/bin:$PATH:
 
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-export VISUAL=nvim
-export EDITOR=nvim
+export VISUAL=lvim
+export EDITOR=lvim
 
 # Key-bindings
 bindkey -s '^o' 'ranger^M'
