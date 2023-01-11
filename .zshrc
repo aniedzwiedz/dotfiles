@@ -6,6 +6,14 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+
 # for _entry in /home/aniedzwiedz/.local/share/gem/*; do
 #   if [[ -d $_entry ]]; then
 #     # TODO: Add only if not there already
@@ -31,6 +39,15 @@ bindkey -s '^o' 'ranger^M'
 bindkey -s '^g' 'lazygit^M'
 
 alias grep_all="git branch -a | tr -d \* | sed '/->/d' | xargs git grep"
+
+
+alias opisz='tldr '
+
+# https://www.youtube.com/watch?v=91p1Fp7Db5c&ab_channel=ElijahManor
+alias pogoda='curl -4 wttr.in/warsaw'
+alias ll='exa --long --header --git --icons '
+alias tree='exa --tree --level=4 -a -I=.git --git-ignore '
+alias gbb='git branch --sort=committerdate | fzf --header "Checkout Recen Branch" --preview "git diff {1} --color=always " |xargs git checkout'
 
 # YT
 # https://github.com/ytdl-org/youtube-dl/
@@ -210,3 +227,4 @@ alias wltgtgw5='ssh -p 2005 194.25.144.14 -o StrictHostKeyChecking=no -o UserKno
 
 
 alias mvn='/mnt/c/opt/apache-maven-3.3.9/bin/mvn -B -Darguments=-DskipTests -Dmaven.test.skip=true -DskipTests -f  pom.xml  '
+
