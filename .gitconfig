@@ -1,0 +1,129 @@
+[core]
+    excludesFile = /home/aniedzwiedz/.gitignore_global
+    pager = delta
+        editor = "lvim "
+        ; fileMode = false
+    repositoryformatversion = 0
+
+[interactive]
+    diffFilter = delta --color-only
+    features = unobtrusive-line-numbers decorations
+    whitespace-error-style = 22 reverse
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    line-numbers = true
+    side-by-side = true
+    line-numbers-left-format = " "
+    line-numbers-right-format = "| "
+    ; features = woolly-mammoth
+    ; features = calochortus-lyallii
+    ; features = niedzwiedz
+    features = collared-trogon
+
+[include]
+    path = /home/aniedzwiedz/.themes.gitconfig
+
+[push]
+    default = current
+[pull]
+    rebase = false
+
+[credential]
+    helper = cache
+
+[difftool]
+    prompt = true
+
+[diff]
+        ; tool = lvimdiff
+  colorMoved = default
+
+[difftool "lvimdiff"]
+    cmd = "lvim -d \"$LOCAL\" \"$REMOTE\""
+
+[merge]
+        tool = lvimdiff
+
+
+
+ [delta "unobtrusive-line-numbers"]
+     line-numbers = true
+     line-numbers-minus-style = "#44444"
+     line-numbers-zero-style = "#44444"
+     line-numbers-plus-style = "#44444"
+     line-numbers-left-format = "{nm:>4}┊"
+     line-numbers-right-format = "{np:>4}│"
+     line-numbers-left-style = blue
+     line-numbers-right-style = blue
+
+ [delta "interactive"]
+     keep-plus-minus-markers = false
+     minus-style = red bold ul "#ffeeee"
+
+ [delta "decorations"]
+     commit-decoration-style = blue ol
+     commit-style = raw
+     file-style = omit
+     hunk-header-decoration-style = blue box
+     hunk-header-file-style = red
+     hunk-header-line-number-style = "#067a00"
+     hunk-header-style = file line-number syntax
+[user]
+  name = Niedzwiedz Artur
+  email = artur.niedzwiedz@igt.com
+
+[alias]
+  parent = "!git show-branch | grep '*' | grep -v \"$(git rev-parse --abbrev-ref HEAD)\" | head -n1 | sed 's/.*\\[\\(.*\\)\\].*/\\1/' | sed 's/[\\^~].*//' #"
+  history = "log --cherry --online --graph"
+  branchdate = for-each-ref --sort=-committerdate refs/heads/ --format="%(authordate:short)%09%(objectname:short)%09%1B[0;33m%(refname:short)%1B[m%09"
+  remove-tags = "!f() { git tag -l ${1} | xargs -I % echo \"git tag -d % && git push --delete origin %\" | sh; }; f"
+  tags-sort = !"git for-each-ref \
+    --sort=taggerdate \
+    --format '%(tag)_,,,_%(taggerdate:raw)_,,,_%(taggername)_,,,_%(subject)' refs/tags \
+    | awk 'BEGIN { FS = \"_,,,_\"  } ; { t=strftime(\"%Y-%m-%d  %H:%M\",$2); printf \"%-20s %-18s %-25s %s\\n\", t, $1, $4, $3  }'"
+  st = status -sb
+  ci = commit
+  co = checkout
+  a = add .
+  graph = log --graph --oneline --decorate=short --branches='*'
+  br = branch
+  df = diff --color-words='[^[:space:]]'
+  sh = show --color-words='[^[:space:]]'
+  lg = log -p
+  undo = reset --soft HEAD~1
+
+[color]
+    branch = auto
+    ; diff = auto
+    status = auto
+    showbranch = auto
+        ui = true
+
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = yellow dim
+
+[color "diff"]
+        meta = 11
+        frag = magenta bold
+        old = red bold
+        new = green bold
+        func = 146 bold
+        commit = yellow bold
+        whitespace = red reverse
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+; [color "diff-highlight"]
+;       oldNormal = red bold
+;       oldHighlight = red bold 52
+;       newNormal = green bold
+;       newHighlight = green bold 22
+[http]
+        sslverify = false
