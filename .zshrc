@@ -5,15 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-
 # for _entry in /home/aniedzwiedz/.local/share/gem/*; do
 #   if [[ -d $_entry ]]; then
 #     # TODO: Add only if not there already
@@ -48,6 +39,7 @@ alias pogoda='curl -4 wttr.in/warsaw'
 alias ll='exa --long --header --git --icons '
 alias tree='exa --tree --level=4 -a -I=.git --git-ignore '
 alias gbb='git branch --sort=committerdate | fzf --header "Checkout Recen Branch" --preview "git diff {1} --color=always " |xargs git checkout'
+alias tree='exa --tree --level=4 -a -I=.git --git-ignore '
 
 # YT
 # https://github.com/ytdl-org/youtube-dl/
@@ -65,7 +57,14 @@ source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
 #export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border --info inline --preview-window down:1:noborder  --color fg:#bbccdd,fg+:#ddeeff,bg:#334455,preview-bg:#223344,border:#778899 --cycle'
-export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border --info inline  --cycle'
+# https://minsw.github.io/fzf-color-picker/
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+ --color=fg:#d1d1d1,bg:#302e2e,hl:#4879ab
+ --color=fg+:#ff006f,bg+:#302e2e,hl+:#00eaff
+ --color=info:#afaf87,prompt:#ff006f,pointer:#ff006f
+ --color=marker:#08ff1d,spinner:#afaf87,header:#34d1d1
+ --height 60% --layout=reverse --border --info inline  --cycle'
+
 ### export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border --preview "bat --style=numbers --color=always --line-range :50 {}"'
 
 # export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs --exclude .git'
@@ -178,7 +177,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ruby textmate)
+plugins=(git git-extras ruby textmate kubectl docker docker-compose zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
